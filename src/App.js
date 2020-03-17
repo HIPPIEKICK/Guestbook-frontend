@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from "react"
+import { NewMessageForm } from "components/NewMessageForm"
+import { PostedMessage } from "components/PostedMessage"
 
 export const App = () => {
+  const [postedMessages, setPostedMessages] = useState([])
+  const [newPostedMessage, setNewPostedMessage] = useState("")
+
+  useEffect(() => {
+    fetch('http://localhost:8080', { method: 'GET' })
+      .then(res => res.json())
+      .then(json => setPostedMessages(json))
+  }, [newPostedMessage])
+
+  const handleFormSubmit = (message) => {
+    fetch('http://localhost:8080', {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(() => setNewPostedMessage(message))
+      .catch(err => {
+        throw err;
+      })
+  }
+
   return (
     <div>
-      Find me in src/app.js!
+      <NewMessageForm onFormSubmit={handleFormSubmit} />
+      {postedMessages[0] && (
+        postedMessages.map((message) => (
+          <PostedMessage
+            key={message._id}
+            _id={message._id}
+            message={message.message}
+            createdAt={message.createdAt}
+          />
+        ))
+      )}
     </div>
   )
 }
