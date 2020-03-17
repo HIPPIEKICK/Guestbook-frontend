@@ -31,12 +31,14 @@ export const App = () => {
       <NewMessageForm onFormSubmit={handleFormSubmit} />
       {postedMessages[0] && (
         postedMessages.map((message) => (
-          <PostedMessage
-            key={message._id}
-            _id={message._id}
-            message={message.message}
-            createdAt={message.createdAt}
-          />
+          <>
+            <PostedMessage
+              key={message._id}
+              _id={message._id}
+              message={message.message}
+              createdAt={message.createdAt}
+            />
+          </>
         ))
       )}
     </Wrapper>
