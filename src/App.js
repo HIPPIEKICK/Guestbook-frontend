@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { NewMessageForm } from "components/NewMessageForm"
 import { PostedMessage } from "components/PostedMessage"
+import { Wrapper, Header } from "Styling"
 
 export const App = () => {
   const [postedMessages, setPostedMessages] = useState([])
@@ -25,7 +26,8 @@ export const App = () => {
   }
 
   return (
-    <div>
+    <Wrapper>
+      <Header>Guestbook</Header>
       <NewMessageForm onFormSubmit={handleFormSubmit} />
       {postedMessages[0] && (
         postedMessages.map((message) => (
@@ -37,6 +39,6 @@ export const App = () => {
           />
         ))
       )}
-    </div>
+    </Wrapper>
   )
 }

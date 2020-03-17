@@ -1,13 +1,12 @@
 import React from "react"
+import { Button, PostedMessageCard, Message, TimeStamp } from "Styling"
 
 export const PostedMessage = (props) => {
   return (
-    <div
+    <PostedMessageCard
       key={props._id}>
-      <p>{props.message}</p>
-      <div>
-        <p>{props.createdAt}</p>
-      </div>
-    </div>
+      <Message>{props.message}</Message>
+      <TimeStamp>{props.createdAt}</TimeStamp>
+    </PostedMessageCard>
   )
 }
