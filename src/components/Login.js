@@ -6,10 +6,9 @@ import { Wrapper, Header } from "Styling"
 import GoogleLogin from 'react-google-login'
 import { GoogleLogout } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login'
-import { Login } from "components/Login"
-import { Guestbook } from "components/Guestbook"
+import { PostData } from "./PostData"
 
-export const App = () => {
+export const Login = () => {
   // const [postedMessages, setPostedMessages] = useState([])
   // const [newPostedMessage, setNewPostedMessage] = useState("")
   const [facebookResponse, setFacebookResponse] = useState()
@@ -36,52 +35,80 @@ export const App = () => {
   //   console.log("Efter fetch")
   // }
 
-  // if (redirect) {
-  //   return (<Redirect to={"/messages"} />)
-  // }
 
-  // const handleLogin = (res, type) => {
-  //   console.log(res, type)
 
-  //   if (type === "facebook" && res.name) {
-  //     setName(res.name)
-  //   } else if (type === "google" && res.Rt.Ad) {
-  //     setName(res.Rt.Ad)
-  //   }
-  //   // Change this to only authorize before redirect
-  //   setRedirect(true)
+  const handleLogin = (res, type) => {
+    console.log(res, type)
 
-  // }
+    let postData
 
-  // const responseGoogle = (response) => {
-  //   setGoogleResponse(response)
-  //   console.log(googleResponse)
-  //   handleLogin(response, "google")
-  // }
+    if (type === "facebook" && res.name) {
+      setName(res.name)
+      postData = {
+        name: res.name,
+        provider: type,
+        email: res.email,
+        provider_id: res.id,
+        token: res.accessToken,
+        provider_pic: res.picture.data.url
+      }
+      console.log(postData)
 
-  // const logout = () => {
+      sessionStorage.setItem("accessToken", (postData.token))
+      sessionStorage.setItem("name", (postData.name))
+      // sessionStorage.setItem("email", (postData.email))
+      // Change this to only authorize before redirect
+      // setRedirect(true)
 
-  // }
+    } if (type === "google" && res.Rt.Ad) {
+      setName(res.Rt.Ad)
+      postData = {
+        name: res.Rt.Ad,
+        provider: type,
+        email: res.Rt.Au,
+        provider_id: res.Ca,
+        token: res.uc.access_token,
+        provider_pic: res.Rt.kL,
+        tokenId: res.tokenId
+      }
+      console.log(postData)
 
-  // console.log(googleResponse)
+      // sessionStorage.setItem("accessToken", (postData.token))
+      sessionStorage.setItem("name", (postData.name))
+      sessionStorage.setItem("id_token", postData.tokenId)
+      setRedirect(true)
+    }
 
-  // const responseFacebook = (response) => {
-  //   setFacebookResponse(response)
-  //   // console.log(facebookResponse)
-  //   handleLogin(response, "facebook")
-  // }
+
+  }
+
+  if (redirect) {
+    return (<Redirect to={"/guestbook"} />)
+  }
+
+  const responseGoogle = (response) => {
+    setGoogleResponse(response)
+    console.log(googleResponse)
+    handleLogin(response, "google")
+  }
+
+  const logout = () => {
+
+  }
+
+  console.log(googleResponse)
+
+  const responseFacebook = (response) => {
+    setFacebookResponse(response)
+    // console.log(facebookResponse)
+    handleLogin(response, "facebook")
+  }
 
   return (
     <Wrapper>
-      <BrowserRouter>
-        <Header>App</Header>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/guestbook" component={Guestbook} />
-          {/* <Login /> */}
-        </Switch>
-      </BrowserRouter>
-      {/* <GoogleLogin
+      <Header>Login</Header>
+
+      <GoogleLogin
         clientId="367774355192-9pick8lrfghtmdmb6v12d0odm6a3qk89.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={responseGoogle}
@@ -94,14 +121,14 @@ export const App = () => {
         buttonText="Logout"
         onLogoutSuccess={logout}
       >
-      </GoogleLogout> */}
+      </GoogleLogout>
 
-      {/* <FacebookLogin
+      <FacebookLogin
         appId="532400944075111"
         autoLoad={true}
         fields="name,email,picture"
         // onClick={componentClicked}
-        callback={responseFacebook} /> */}
+        callback={responseFacebook} />
 
       {facebookResponse && (
         <>

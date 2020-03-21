@@ -1,13 +1,12 @@
 import React from "react"
 import { Button } from "Styling"
 
-
 export const Remove = (props) => {
   const handleRemove = () => {
     console.log("här")
     fetch(`http://localhost:8080/messages/${props._id}`, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
     })
       .catch(err => {
         throw err;
