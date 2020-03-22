@@ -29,7 +29,7 @@ padding: 3px;
 `
 
 export const Button = styled.button`
-
+border: 1px solid black;
 `
 
 export const PostedMessageCard = styled.div`
