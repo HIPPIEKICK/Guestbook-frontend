@@ -12,7 +12,6 @@ export const Guestbook = () => {
   const [redirect, setRedirect] = useState(false)
 
   let name = sessionStorage.getItem("name")
-  // let token = sessionStorage.getItem("accessToken")
 
   useEffect(() => {
     fetch('http://localhost:8080', {
@@ -42,9 +41,10 @@ export const Guestbook = () => {
   //   return (<Redirect to={"/"} />)
   // }
 
+
   return (
     <Wrapper>
-      <Header>Guestbook</Header>
+      {/* <Header>Guestbook</Header> */}
       <NewMessageForm onFormSubmit={handleFormSubmit} />
       {postedMessages[0] && (
         postedMessages.map((message) => (
@@ -53,6 +53,7 @@ export const Guestbook = () => {
             _id={message._id}
             message={message.message}
             name={message.name}
+            googleId={message.googleId}
             createdAt={message.createdAt}
           />
         ))

@@ -15,7 +15,7 @@ export const NewMessageForm = ({ onFormSubmit }) => {
       <Form>
         <Label>
           <NewMessage type="text"
-            placeholder="Write your message here..."
+            placeholder="Skriv ditt meddelande här..."
             onChange={(event) => setMessage(event.target.value)}
             value={message}
           >
@@ -23,7 +23,7 @@ export const NewMessageForm = ({ onFormSubmit }) => {
         </Label>
         <Button type="submit"
           onClick={handleNewMessage}
-        >Send message</Button>
+        >Skicka meddelande</Button>
       </Form>
 
     </>

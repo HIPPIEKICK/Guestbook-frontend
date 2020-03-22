@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "Styling"
+import { SmallButton } from "Styling"
 
 export const Remove = (props) => {
   const handleRemove = () => {
@@ -14,6 +14,6 @@ export const Remove = (props) => {
   }
 
   return (
-    <Button type="button" onClick={handleRemove}>Remove message</Button>
+    <SmallButton type="button" onClick={handleRemove}>Ta bort</SmallButton>
   )
 }
