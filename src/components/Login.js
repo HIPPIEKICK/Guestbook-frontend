@@ -64,10 +64,10 @@ export const Login = () => {
     <Wrapper>
 
 
-      <WelcomeBox>
-        {/* <InfoText>Login to read messages and write your own ones</InfoText> */}
-        <Image src={TypeWriter} />
-      </WelcomeBox>
+      {/* <WelcomeBox> */}
+      {/* <InfoText>Login to read messages and write your own ones</InfoText> */}
+      {/* <Image src={TypeWriter} /> */}
+      {/* </WelcomeBox> */}
       <GoogleLogin
         clientId="367774355192-9pick8lrfghtmdmb6v12d0odm6a3qk89.apps.googleusercontent.com"
         buttonText="Login"
