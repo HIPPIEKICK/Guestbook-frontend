@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import { NewMessageForm } from "components/NewMessageForm"
 import { PostedMessage } from "components/PostedMessage"
-import { Wrapper, Header } from "Styling"
-import GoogleLogin from 'react-google-login'
+import { Wrapper } from "Styling"
 
 export const Guestbook = () => {
   const [postedMessages, setPostedMessages] = useState([])
@@ -11,9 +10,10 @@ export const Guestbook = () => {
   const [updatedMessage, setUpdatedMessage] = useState(false)
 
   let name = sessionStorage.getItem("name")
-
+  let url = "https://guestbook-matilda-arvidsson.herokuapp.com/"
+  let testUrl = "http://localhost:8080"
   useEffect(() => {
-    fetch('http://localhost:8080', {
+    fetch(url, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
     })
@@ -22,7 +22,7 @@ export const Guestbook = () => {
   }, [newPostedMessage, updatedMessage])
 
   const handleFormSubmit = (message) => {
-    fetch('http://localhost:8080', {
+    fetch(url, {
       method: 'POST',
       body: JSON.stringify({ message, name }),
       headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
@@ -31,7 +31,6 @@ export const Guestbook = () => {
       .catch(err => {
         throw err
       })
-    console.log("Efter fetch")
   }
   const id_token = sessionStorage.getItem("id_token")
 
@@ -45,7 +44,6 @@ export const Guestbook = () => {
 
   return (
     <Wrapper>
-      {/* <Header>Guestbook</Header> */}
       <NewMessageForm onFormSubmit={handleFormSubmit} />
       {postedMessages[0] && (
         postedMessages.map((message) => (
