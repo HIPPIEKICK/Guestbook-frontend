@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import { NewMessageForm } from "components/NewMessageForm"
 import { PostedMessage } from "components/PostedMessage"
-import { Wrapper, Header, WelcomeBox, Image, InfoText } from "Styling"
+import { Wrapper, Header, WelcomeBox, Image, InfoText, Footer } from "Styling"
 import GoogleLogin from 'react-google-login'
 import { GoogleLogout } from 'react-google-login';
 // import FacebookLogin from 'react-facebook-login'
@@ -64,18 +64,19 @@ export const Login = () => {
     <Wrapper>
 
 
-      {/* <WelcomeBox> */}
-      {/* <InfoText>Login to read messages and write your own ones</InfoText> */}
-      {/* <Image src={TypeWriter} /> */}
-      {/* </WelcomeBox> */}
-      <GoogleLogin
-        clientId="367774355192-9pick8lrfghtmdmb6v12d0odm6a3qk89.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
+      <WelcomeBox>
+        <InfoText>Logga in nedan för att läsa och skriva i gästboken. Det namn du loggar in med kommer synas på dina meddelanden.</InfoText>
+        {/* <Image src={TypeWriter} /> */}
 
+        <GoogleLogin
+          clientId="367774355192-9pick8lrfghtmdmb6v12d0odm6a3qk89.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
+      </WelcomeBox>
+      <Footer>Gästbok av Matilda Arvidsson. Hjärt-emoji från Noun Project.</Footer>
       {/* <GoogleLogout
         clientId="367774355192-9pick8lrfghtmdmb6v12d0odm6a3qk89.apps.googleusercontent.com"
         buttonText="Logout"

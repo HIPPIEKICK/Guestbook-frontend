@@ -14,11 +14,8 @@ align-items: center;
 `
 
 export const Wrapper = styled.div`
-/* background-color: #fcf7bb; */
-/* background-color: #ecdfc8; */
-/* background-color: #dee3e2; */
-border-radius: 10px;
-padding: 10px;
+/* border-radius: 10px; */
+/* padding: 10px; */
 /* opacity: 0.5; */
 font-family: 'Quicksand', sans-serif;
 font-weight: 300;
@@ -32,7 +29,15 @@ justify-content: center;
 `
 
 export const WelcomeBox = styled.section`
-margin-bottom: 15px;
+/* margin-bottom: 15px; */
+width: 230px;
+/* height: 180px; */
+background-color: #fcf8e8;
+padding: 10px 20px;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
 @media(min-width: 768px) {
 
   }
@@ -57,6 +62,13 @@ text-transform: uppercase;
 
 export const InfoText = styled.p`
 /* margin: 0 0 10px 0; */
+color: #283E51;
+`
+export const Footer = styled.footer`
+color: white;
+width: 230px;
+margin-top: 20px;
+font-size: 14px;
 `
 
 export const Form = styled.form`
