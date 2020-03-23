@@ -106,6 +106,7 @@ margin: 0 10px 10px 10px;
 
 export const LikesWrap = styled.div`
 display: flex;
+margin-left: 3px;
 `
 
 export const LikeButton = styled.button`
@@ -113,6 +114,7 @@ background-color: transparent;
 border: none;
 width: 30px;
 font-size: 16px;
+
 `
 
 export const LikeHeart = styled.img`
@@ -120,10 +122,19 @@ width: 20px;
 
 `
 
+export const EditButtons = styled.div`
+
+`
+
+export const ButtonGroup = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
 export const PostedMessageCard = styled.div`
 width: 260px;
 background-color: #fcf8e8;
-padding: 0 3px;
+padding: 8px;
 margin: 10px 0 10px 0;
 border-radius: 10px;
 @media(min-width: 768px) {
@@ -152,7 +163,7 @@ export const StyledEdiText = styled(EdiText)`
 div[editext="view-container"], div[editext="edit-container"] {
     display: flex;
     flex-direction: column;
-    margin: 10px 10px 20px 10px;
+    margin: 10px;
     align-items: flex-start;
 
 }

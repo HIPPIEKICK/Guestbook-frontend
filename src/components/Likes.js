@@ -10,6 +10,8 @@ export const Likes = (props) => {
       method: 'POST',
       // body: "",
       headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+    }).then(() => {
+      props.onUpdatedMessage()
     })
       .catch(err => {
         throw err;
@@ -19,7 +21,7 @@ export const Likes = (props) => {
   return (
     <LikesWrap>
       <LikeButton
-        onClick={() => handleLike()}>
+        onClick={handleLike}>
         <LikeHeart src={Heart2} />
       </LikeButton>
       x {props.likes}

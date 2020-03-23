@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { PostedMessageCard, Message, TimeStamp, SmallButton, StyledEdiText, Name, LikeButton, Line, BottomLine, LikeHeart } from "Styling"
+import { PostedMessageCard, Message, TimeStamp, SmallButton, StyledEdiText, Name, LikeButton, Line, BottomLine, LikeHeart, ButtonGroup, EditButtons } from "Styling"
 import { Remove } from "./Remove"
 import { Edit } from "./Edit"
 import EdiText from "react-editext"
@@ -56,21 +56,26 @@ export const PostedMessage = (props) => {
       <BottomLine></BottomLine>
       {/* <LikeButton><LikeHeart src={Heart} /></LikeButton>
       x {props.likes} */}
-      <Likes
-        _id={props._id}
-        // onMessageLiked={props.onMessageLiked}
-        likes={props.likes}
-      />
-      {(sessionStorage.getItem("googleId") === props.googleId) && (
-        <>
-          <BottomLine></BottomLine>
-          <Remove
-            _id={props._id} />
-          {/* <Edit
+      <ButtonGroup>
+        <Likes
+          _id={props._id}
+          onUpdatedMessage={props.onUpdatedMessage}
+          likes={props.likes}
+        />
+        {(sessionStorage.getItem("googleId") === props.googleId) && (
+          <EditButtons>
+            {/* <BottomLine></BottomLine> */}
+            <Remove
+              _id={props._id}
+              onUpdatedMessage={props.onUpdatedMessage}
+            />
+            {/* <Edit
             _id={props._id} /> */}
-          <SmallButton onClick={() => setEditing(!editing)}>Redigera</SmallButton>
-        </>
-      )}
+            <SmallButton onClick={() => setEditing(!editing)}>Redigera</SmallButton>
+          </EditButtons>
+        )}
+
+      </ButtonGroup>
     </PostedMessageCard>
   )
 }

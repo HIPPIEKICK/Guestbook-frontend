@@ -7,6 +7,8 @@ export const Remove = (props) => {
     fetch(`http://localhost:8080/messages/${props._id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+    }).then(() => {
+      props.onUpdatedMessage()
     })
       .catch(err => {
         throw err;
