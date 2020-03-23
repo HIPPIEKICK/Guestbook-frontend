@@ -1,9 +1,11 @@
 import React, { useState } from "react"
-import { PostedMessageCard, Message, TimeStamp, SmallButton, StyledEdiText, Name } from "Styling"
+import { PostedMessageCard, Message, TimeStamp, SmallButton, StyledEdiText, Name, LikeButton, Line, BottomLine, LikeHeart } from "Styling"
 import { Remove } from "./Remove"
 import { Edit } from "./Edit"
 import EdiText from "react-editext"
 import moment from "moment"
+import Heart from "../Assets/Heart.svg"
+import { Likes } from "./Likes"
 
 export const PostedMessage = (props) => {
   const [editing, setEditing] = useState(false)
@@ -22,12 +24,24 @@ export const PostedMessage = (props) => {
       })
   }
 
+  // const handleLike = () => {
+  //   fetch(`http://localhost:8080/messages/${props._id}/like`, {
+  //     method: 'POST',
+  //     // body: JSON.stringify({ message: value }),
+  //     headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+  //   })
+  //     .catch(err => {
+  //       throw err;
+  //     })
+  // }
+
   console.log(props.googleId)
   return (
     <PostedMessageCard
       key={props._id}>
       <Name>{props.name}</Name>
       <TimeStamp>{moment(props.createdAt).fromNow()}</TimeStamp>
+      <Line></Line>
       <StyledEdiText
         value={props.message}
         type="textarea"
@@ -39,9 +53,17 @@ export const PostedMessage = (props) => {
         cancelButtonContent="Cancel"
         editButtonContent="Edit message"
       />
-
+      <BottomLine></BottomLine>
+      {/* <LikeButton><LikeHeart src={Heart} /></LikeButton>
+      x {props.likes} */}
+      <Likes
+        _id={props._id}
+        // onMessageLiked={props.onMessageLiked}
+        likes={props.likes}
+      />
       {(sessionStorage.getItem("googleId") === props.googleId) && (
         <>
+          <BottomLine></BottomLine>
           <Remove
             _id={props._id} />
           {/* <Edit

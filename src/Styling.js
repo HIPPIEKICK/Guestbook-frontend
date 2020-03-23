@@ -95,6 +95,31 @@ width: 65px;
 }
 `
 
+export const Line = styled.hr`
+border: 1px solid #ecdfc8;
+margin: 10px 10px 0 10px;
+`
+
+export const BottomLine = styled(Line)`
+margin: 0 10px 10px 10px;
+`
+
+export const LikesWrap = styled.div`
+display: flex;
+`
+
+export const LikeButton = styled.button`
+background-color: transparent;
+border: none;
+width: 30px;
+font-size: 16px;
+`
+
+export const LikeHeart = styled.img`
+width: 20px;
+
+`
+
 export const PostedMessageCard = styled.div`
 width: 260px;
 background-color: #fcf8e8;

@@ -4,12 +4,10 @@ import { NewMessageForm } from "components/NewMessageForm"
 import { PostedMessage } from "components/PostedMessage"
 import { Wrapper, Header } from "Styling"
 import GoogleLogin from 'react-google-login'
-import FacebookLogin from 'react-facebook-login'
 
 export const Guestbook = () => {
   const [postedMessages, setPostedMessages] = useState([])
   const [newPostedMessage, setNewPostedMessage] = useState("")
-  const [redirect, setRedirect] = useState(false)
 
   let name = sessionStorage.getItem("name")
 
@@ -34,13 +32,11 @@ export const Guestbook = () => {
       })
     console.log("Efter fetch")
   }
+  const id_token = sessionStorage.getItem("id_token")
 
-
-  //This should be something like "if not logged in, redirect to login"
-  // if (!redirect) {
-  //   return (<Redirect to={"/"} />)
-  // }
-
+  if (!id_token) {
+    return (<Redirect to={"/"} />)
+  }
 
   return (
     <Wrapper>
@@ -55,6 +51,7 @@ export const Guestbook = () => {
             name={message.name}
             googleId={message.googleId}
             createdAt={message.createdAt}
+            likes={message.likes.length}
           />
         ))
       )}
