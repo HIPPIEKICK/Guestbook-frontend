@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import { Wrapper, WelcomeBox, InfoText, Footer } from "Styling"
-import GoogleLogin from 'react-google-login'
-import { GoogleLogout } from 'react-google-login';
+import GoogleLogin from "react-google-login"
+import { GoogleLogout } from "react-google-login";
 
 export const Login = () => {
   const [redirect, setRedirect] = useState(false)
@@ -31,7 +31,7 @@ export const Login = () => {
           buttonText="Login"
           onSuccess={handleLogin}
           onFailure={handleLogin}
-          cookiePolicy={'single_host_origin'}
+          cookiePolicy={"single_host_origin"}
         />
       </WelcomeBox>
       <Footer>Gästbok av Matilda Arvidsson. Hjärt-emoji från Noun Project.</Footer>

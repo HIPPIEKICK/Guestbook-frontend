@@ -14,8 +14,8 @@ export const Guestbook = () => {
   let testUrl = "http://localhost:8080"
   useEffect(() => {
     fetch(url, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+      method: "GET",
+      headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     })
       .then(res => res.json())
       .then(json => setPostedMessages(json))
@@ -23,9 +23,9 @@ export const Guestbook = () => {
 
   const handleFormSubmit = (message) => {
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({ message, name }),
-      headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+      headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     })
       .then(() => setNewPostedMessage(message))
       .catch(err => {

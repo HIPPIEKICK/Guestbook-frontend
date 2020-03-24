@@ -8,8 +8,8 @@ export const Remove = (props) => {
   const handleRemove = () => {
     console.log("här")
     fetch(`${url}messages/${props._id}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     }).then(() => {
       props.onUpdatedMessage()
     })

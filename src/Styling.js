@@ -31,8 +31,8 @@ export const WelcomeBox = styled.section`
   flex-direction: column;
   align-items: center;
   @media(min-width: 768px) {
-
-    }
+    width: 500px;
+  }
 `
 
 export const Image = styled.img`
@@ -56,6 +56,9 @@ export const Footer = styled.footer`
   width: 230px;
   margin-top: 20px;
   font-size: 14px;
+  @media(min-width: 768px) {
+    width: 500px;
+  }
 `
 
 export const Form = styled.form`
@@ -67,6 +70,9 @@ export const Form = styled.form`
   padding: 8px;
   margin: 5px 0;
   border-radius: 10px;
+  @media(min-width: 768px) {
+    width: 500px;
+  }
 `
 
 export const Label = styled.label`
@@ -82,7 +88,7 @@ export const NewMessage = styled.textarea`
   font-size: 14px;
   margin: 5px 0;
   @media(min-width: 768px) {
-    width: 500px;
+    width: 475px;
     font-size: 16px;
   }
 `
@@ -109,7 +115,6 @@ export const SmallButton = styled(Button)`
   width: 65px;
   @media(min-width: 768px) {
     width: 90px;
-    margin-bottom: 20px;
   }
 `
 
@@ -138,16 +143,15 @@ export const LikeButton = styled.button`
 
 export const LikeHeart = styled.img`
   width: 20px;
-
 `
 
 export const EditButtons = styled.div`
-
 `
 
 export const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-right: 10px;
 `
 
@@ -163,13 +167,13 @@ export const PostedMessageCard = styled.div`
   }
 `
 
-export const Message = styled.p`
-
-`
 export const TimeStamp = styled.p`
   font-size: 12px;
   color: grey;
   margin: 0 0 0 10px;
+  @media(min-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 export const Name = styled.p`
@@ -177,6 +181,9 @@ export const Name = styled.p`
   color: #283E51;
   font-weight: bold;
   margin: 10px 0 0 10px;
+  @media(min-width: 768px) {
+    font-size: 18px;
+  }
 `
 
 export const StyledEdiText = styled(EdiText)`
@@ -188,6 +195,9 @@ export const StyledEdiText = styled(EdiText)`
     font-size: 14px;
     font-weight: 300;
     color: #283E51;
+    @media(min-width: 768px) {
+    font-size: 16px;
+  }
   }
   textarea {
     border: 2px solid #ecdfc8;
@@ -197,6 +207,9 @@ export const StyledEdiText = styled(EdiText)`
     padding: 5px;
     font-size: 14px;
     margin: 5px 0;
+    @media(min-width: 768px) {
+    width: 465px;
+  }
   }
   button[editext="edit-button"] {
     display:none;
@@ -211,5 +224,9 @@ export const StyledEdiText = styled(EdiText)`
     width: 50px;
     border-radius: 4px;
     margin: 0 8px 0 0;
+    @media(min-width: 768px) {
+    font-size: 16px;
+    width: 65px;
+  }
   }
 `

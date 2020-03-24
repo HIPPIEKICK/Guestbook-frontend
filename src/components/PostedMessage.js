@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { PostedMessageCard, TimeStamp, SmallButton, StyledEdiText, Name, Line, BottomLine, ButtonGroup, EditButtons } from "Styling"
 import { Remove } from "./Remove"
 import moment from "moment"
-import localization from 'moment/locale/sv'
+import localization from "moment/locale/sv"
 import { Likes } from "./Likes"
 
 export const PostedMessage = (props) => {
@@ -16,9 +16,9 @@ export const PostedMessage = (props) => {
     console.log(value)
     setValue(value)
     fetch(`${url}messages/${props._id}`, {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify({ message: value }),
-      headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+      headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     })
       .catch(err => {
         throw err;

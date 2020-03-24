@@ -1,5 +1,5 @@
 import React from "react"
-import Heart2 from '../Assets/Heart2.svg'
+import Heart2 from "../Assets/Heart2.svg"
 import Heart3 from "../Assets/Heart3.svg"
 import { LikeHeart, LikeButton, LikesWrap } from "Styling"
 
@@ -9,9 +9,9 @@ export const Likes = (props) => {
 
   const handleLike = () => {
     fetch(`${url}messages/${props._id}/like`, {
-      method: 'POST',
+      method: "POST",
       // body: "",
-      headers: { 'Content-Type': 'application/json', "Authorization": sessionStorage.getItem("id_token") }
+      headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     }).then(() => {
       props.onUpdatedMessage()
     })
