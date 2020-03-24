@@ -67,7 +67,7 @@ export const Form = styled.form`
   align-items: center;
   width: 280px;
   background-color: #fcf8e8;
-  padding: 8px;
+  padding: 8px 8px 12px 8px;
   margin: 5px 0;
   border-radius: 10px;
   @media(min-width: 768px) {
@@ -93,6 +93,25 @@ export const NewMessage = styled.textarea`
   }
 `
 
+export const SearchForm = styled(Form)`
+flex-direction: row;
+`
+
+export const Input = styled.input`
+  border: 2px solid #ecdfc8;
+  border-radius: 3px;
+  background-color: white;
+  height: 25px;
+  width: 95%;
+  margin: 4px 6px;
+  font-size: 14px;
+  padding: 3px;
+  @media(min-width: 768px) {
+    height: 30px;
+    font-size: 16px;
+  }
+`
+
 export const Button = styled.button`
   border: none;
   background-color: #ecdfc8;
@@ -114,6 +133,18 @@ export const Button = styled.button`
     font-size: 16px;
     width: 170px;
   }
+`
+
+export const NextButton = styled(Button)`
+  background-color: #283E51;
+  color: white;
+  &:hover {
+    background-color: #283E51;
+  }
+`
+
+export const SearchButton = styled.button`
+font-size: 20px;
 `
 
 export const SmallButton = styled(Button)`
@@ -162,10 +193,10 @@ export const LikeHeart = styled.div`
     width: 20px;
   }
   .beige-heart:hover {
-    fill: #d5c9b5;
+    fill: #d63347;
   }
   .red-heart:hover {
-    fill: #a82838;
+    fill: #ecdfc8;
   }
   @media(min-width: 768px) {
     svg {
@@ -187,7 +218,7 @@ export const ButtonGroup = styled.div`
 export const PostedMessageCard = styled.div`
   width: 280px;
   background-color: #fcf8e8;
-  padding: 8px;
+  padding: 8px 8px 12px 8px;
   margin: 5px 0;
   border-radius: 10px;
   @media(min-width: 768px) {

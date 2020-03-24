@@ -2,27 +2,34 @@ import React, { useState, useEffect } from "react"
 import { Redirect } from "react-router-dom"
 import { NewMessageForm } from "components/NewMessageForm"
 import { PostedMessage } from "components/PostedMessage"
-import { Wrapper } from "Styling"
+import { SearchField } from "components/Searchfield"
+import { Wrapper, NextButton, ButtonGroup } from "Styling"
+import { relativeTimeRounding } from "moment"
 
 export const Guestbook = () => {
   const [postedMessages, setPostedMessages] = useState([])
   const [newPostedMessage, setNewPostedMessage] = useState("")
   const [updatedMessage, setUpdatedMessage] = useState(false)
+  // const [searchQuery, setSearchQuery] = useState("")
+  const [page, setPage] = useState(1)
+  // const [pageQuery, setPageQuery] = ("")
+  const [query, setQuery] = useState("")
+  const [savedSearchTerm, setSavedSearchTerm] = useState("")
 
   let name = sessionStorage.getItem("name")
   let url = "https://guestbook-matilda-arvidsson.herokuapp.com/"
   let testUrl = "http://localhost:8080"
   useEffect(() => {
-    fetch(url, {
+    fetch(`${testUrl}/messages${query}`, {
       method: "GET",
       headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     })
       .then(res => res.json())
       .then(json => setPostedMessages(json))
-  }, [newPostedMessage, updatedMessage])
+  }, [newPostedMessage, updatedMessage, query, page])
 
   const handleFormSubmit = (message) => {
-    fetch(url, {
+    fetch(`${testUrl}/messages`, {
       method: "POST",
       body: JSON.stringify({ message, name }),
       headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
@@ -42,9 +49,32 @@ export const Guestbook = () => {
     setUpdatedMessage(!updatedMessage)
   }
 
+  const handleSearch = (searchTerm) => {
+    if (searchTerm === '') {
+      handleClear()
+      return
+    }
+    const new_page_number = 1
+    setPage(new_page_number)
+    setQuery(`?search=${searchTerm}&page=${new_page_number}`)
+    setSavedSearchTerm(searchTerm)
+  }
+
+  const handlePages = () => {
+    const new_page_number = page + 1
+    setPage(new_page_number)
+    setQuery(`?search=${savedSearchTerm}&page=${new_page_number}`)
+    window.scrollTo(0, 0);
+  }
+
+  const handleClear = () => {
+    window.location.reload()
+  }
+
   return (
     <Wrapper>
       <NewMessageForm onFormSubmit={handleFormSubmit} />
+      <SearchField onSearch={handleSearch} />
       {postedMessages[0] && (
         postedMessages.map((message) => (
           <>
@@ -61,7 +91,12 @@ export const Guestbook = () => {
           </>
         ))
       )}
-
+      {savedSearchTerm && (
+        <ButtonGroup>
+          <NextButton onClick={() => handleClear()}>Rensa sökfilter</NextButton>
+          <NextButton onClick={() => handlePages()}>Visa flera inlägg</NextButton>
+        </ButtonGroup>
+      )}
     </Wrapper>
   )
 }
