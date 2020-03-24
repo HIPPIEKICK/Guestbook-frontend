@@ -15,7 +15,7 @@ export const Guestbook = () => {
 
   let name = sessionStorage.getItem("name")
   let url = "https://guestbook-matilda-arvidsson.herokuapp.com/"
-  let testUrl = "http://localhost:8080/"
+
   useEffect(() => {
     fetch(`${url}messages${query}`, {
       method: "GET",
@@ -85,14 +85,14 @@ export const Guestbook = () => {
           />
         ))
       )}
-      {savedSearchTerm && postedMessages[0] && (
-        <ButtonGroup>
-          <NextButton onClick={() => handleClear()}>Rensa sökfilter</NextButton>
-          <NextButton onClick={() => handlePages()}>Visa flera inlägg</NextButton>
-        </ButtonGroup>
-      )}
-      {savedSearchTerm && postedMessages.message && (
-        <InfoMessage>Inga meddelanden funna</InfoMessage>
+      {savedSearchTerm && (
+        <>
+          {postedMessages.message && <InfoMessage>Inga meddelanden funna</InfoMessage>}
+          <ButtonGroup>
+            <NextButton onClick={() => handleClear()}>Rensa sökfilter</NextButton>
+            {postedMessages[0] && <NextButton onClick={() => handlePages()}>Visa flera inlägg</NextButton>}
+          </ButtonGroup>
+        </>
       )}
     </Wrapper>
   )

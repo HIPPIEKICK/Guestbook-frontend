@@ -4,12 +4,10 @@ import { LikeHeart, LikeButton, LikesWrap } from "Styling"
 
 export const Likes = (props) => {
   let url = "https://guestbook-matilda-arvidsson.herokuapp.com/"
-  let testUrl = "http://localhost:8080/"
 
   const handleLike = () => {
     fetch(`${url}messages/${props._id}/like`, {
       method: "POST",
-      // body: "",
       headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     }).then(() => {
       props.onUpdatedMessage()
@@ -19,28 +17,28 @@ export const Likes = (props) => {
       })
   }
 
+  const heartButton = (hasLikes) => {
+    return (
+      <>
+        <LikeButton
+          onClick={handleLike} >
+          <LikeHeart>
+            {!hasLikes && (<Heart3 fill="#ecdfc8" className="beige-heart" />)}
+            {hasLikes && (<Heart3 fill="#d63347" className="red-heart" />)}
+          </LikeHeart>
+        </LikeButton >
+        {hasLikes && (<>x {props.likes}</>)}
+      </>
+    )
+  }
+
+  const hasLikes = props.likes > 0
   return (
     <LikesWrap>
-      {props.likes === 0 && (
-        <LikeButton
-          onClick={handleLike}>
-          <LikeHeart>
-            <Heart3 fill="#ecdfc8" className="beige-heart" />
-          </LikeHeart>
-        </LikeButton>
-      )}
-      {props.likes > 0 && (
-        <>
-          <LikeButton
-            onClick={handleLike}>
-            <LikeHeart>
-              <Heart3 fill="#d63347" className="red-heart" />
-            </LikeHeart>
-          </LikeButton>
-          x {props.likes}
-        </>
-      )}
-
+      {heartButton(hasLikes)}
     </LikesWrap>
   )
+
+
+
 }

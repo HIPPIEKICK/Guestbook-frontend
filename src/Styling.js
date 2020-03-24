@@ -48,6 +48,7 @@ export const WelcomeBox = styled.section`
 
 export const InfoText = styled.p`
   color: #283E51;
+  font-size: 14px;
 `
 
 export const Footer = styled.footer`
@@ -99,20 +100,16 @@ export const Button = styled.button`
   color: #283E51;
   padding: 4px 8px;
   font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
   width: 120px;
   border-radius: 4px;
   margin: 0 8px 0 0;
   align-self: flex-end;
   cursor: pointer;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-  transition: 0.2s;
+  border: 0.5px solid rgba(40, 62, 81, 0.5);
+  box-shadow: 2px 2px 4px rgba(40, 62, 81, 1); 
+  transition: background-color 0.2s ease-out;
   &:hover {
     background-color: #d5c9b5;
-  }
-  @media(min-width: 768px) {
-    font-size: 16px;
-    width: 170px;
   }
 `
 
@@ -276,6 +273,7 @@ export const LikeButton = styled.button`
 export const LikeHeart = styled.div`
   svg {
     width: 20px;
+    transition: fill 0.2s ease-out;
   }
   .beige-heart:hover {
     fill: #d63347;
@@ -294,8 +292,9 @@ export const LikeHeart = styled.div`
 export const NextButton = styled(Button)`
   background-color: #283E51;
   color: white;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
   &:hover {
-    background-color: #283E51;
+    background-color: #416583;
   }
 `
 export const InfoMessage = styled.p`

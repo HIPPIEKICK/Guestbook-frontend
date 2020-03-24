@@ -3,7 +3,7 @@ import { SearchForm, Input, SearchButton } from "Styling"
 
 
 export const SearchField = (props) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("")
 
   const handleSubmit = event => {
     event.preventDefault()
