@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
 export const WelcomeBox = styled.section`
   width: 230px;
   background-color: #fcf8e8;
-  padding: 24px 20px 10px 20px;
+  padding: 14px 20px 10px 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
