@@ -7,7 +7,7 @@ export const Likes = (props) => {
   let testUrl = "http://localhost:8080/"
 
   const handleLike = () => {
-    fetch(`${testUrl}messages/${props._id}/like`, {
+    fetch(`${url}messages/${props._id}/like`, {
       method: "POST",
       // body: "",
       headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }

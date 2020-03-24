@@ -10,7 +10,7 @@ export const PostedMessage = (props) => {
   const [value, setValue] = useState()
 
   let url = "https://guestbook-matilda-arvidsson.herokuapp.com/"
-  let testUrl = "http://localhost:8080"
+  let testUrl = "http://localhost:8080/"
 
   const handleEdit = value => {
     console.log(value)

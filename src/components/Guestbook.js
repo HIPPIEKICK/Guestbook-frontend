@@ -15,9 +15,9 @@ export const Guestbook = () => {
 
   let name = sessionStorage.getItem("name")
   let url = "https://guestbook-matilda-arvidsson.herokuapp.com/"
-  let testUrl = "http://localhost:8080"
+  let testUrl = "http://localhost:8080/"
   useEffect(() => {
-    fetch(`${testUrl}/messages${query}`, {
+    fetch(`${url}messages${query}`, {
       method: "GET",
       headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
     })
@@ -25,7 +25,7 @@ export const Guestbook = () => {
       .then(json => setPostedMessages(json))
   }, [newPostedMessage, updatedMessage, query])
   const handleFormSubmit = (message) => {
-    fetch(`${testUrl}/messages`, {
+    fetch(`${url}messages`, {
       method: "POST",
       body: JSON.stringify({ message, name }),
       headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
