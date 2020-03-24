@@ -1,6 +1,6 @@
 import React from "react"
-import Heart2 from "../Assets/Heart2.svg"
-import Heart3 from "../Assets/Heart3.svg"
+import { ReactComponent as Heart2 } from "../Assets/Heart2.svg"
+import { ReactComponent as Heart3 } from "../Assets/Heart3.svg"
 import { LikeHeart, LikeButton, LikesWrap } from "Styling"
 
 export const Likes = (props) => {
@@ -25,14 +25,18 @@ export const Likes = (props) => {
       {props.likes === 0 && (
         <LikeButton
           onClick={handleLike}>
-          <LikeHeart src={Heart3} />
+          <LikeHeart>
+            <Heart3 fill="#ecdfc8" className="beige-heart" />
+          </LikeHeart>
         </LikeButton>
       )}
       {props.likes > 0 && (
         <>
           <LikeButton
             onClick={handleLike}>
-            <LikeHeart src={Heart2} />
+            <LikeHeart>
+              <Heart3 fill="#d63347" className="red-heart" />
+            </LikeHeart>
           </LikeButton>
           x {props.likes}
         </>

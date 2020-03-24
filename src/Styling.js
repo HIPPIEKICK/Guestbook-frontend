@@ -104,6 +104,12 @@ export const Button = styled.button`
   border-radius: 4px;
   margin: 0 8px 0 0;
   align-self: flex-end;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: 0.2s;
+  &:hover {
+    background-color: #d5c9b5;
+  }
   @media(min-width: 768px) {
     font-size: 16px;
     width: 170px;
@@ -129,8 +135,13 @@ export const BottomLine = styled(Line)`
 
 export const LikesWrap = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 3px;
   font-size: 14px;
+  @media(min-width: 768px) {
+    font-size: 16px;
+  }
 `
 
 export const LikeButton = styled.button`
@@ -138,11 +149,29 @@ export const LikeButton = styled.button`
   border: none;
   width: 30px;
   font-size: 16px;
-  margin-right: 2px;
+  padding: 6px 0 0 4px;
+  cursor: pointer;
+  @media(min-width: 768px) {
+    margin-right: 8px;
+    padding: 8px 0 0 8px;
+  }
 `
 
-export const LikeHeart = styled.img`
-  width: 20px;
+export const LikeHeart = styled.div`
+  svg {
+    width: 20px;
+  }
+  .beige-heart:hover {
+    fill: #d5c9b5;
+  }
+  .red-heart:hover {
+    fill: #a82838;
+  }
+  @media(min-width: 768px) {
+    svg {
+      width: 25px;
+  }
+  }
 `
 
 export const EditButtons = styled.div`
