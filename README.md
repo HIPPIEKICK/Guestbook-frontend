@@ -1,19 +1,20 @@
-# Technigo React Starter App
+# Guestbook with OAuth login
 
-This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.
+A guestbook where the user (after login with Google) can:
+- read the 20 latest submitted messages,
+- write their own messages,
+- edit their own messages,
+- delete their own messages,
+- like their own and other's messages,
+- search for messages (and if there are more than 20 results, the user can make a request to see more search results)
 
-Add components in the `src` folder and use them in `src/app.js` to get started.
+## Tech used
+- JavaScript
+- React
+- Styled Components
+- Node.js
+- MongoDb, mongoose
+- moment, react-facebook-login, react-editext, jwt
 
-## Usage
-
-1. On GitHub, click the 'use this template' button to create a new repo on your account
-1. Clone the new repo to your computer
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
-
-Alternatively, if you don't want a new git repo on your account;
-
-1. Download & extract the [latest release](https://github.com/Technigo/react-starter/releases/latest) from GitHub
-1. Open the directory in the terminal: `cd /path/to/react-starter`
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Deployed site here: https://matilda-arvidsson-guestbook.netlify.com/
+Backend-repo here: https://github.com/HIPPIEKICK/Guestbook-backend
