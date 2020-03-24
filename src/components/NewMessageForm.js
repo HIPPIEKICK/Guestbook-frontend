@@ -7,25 +7,22 @@ export const NewMessageForm = ({ onFormSubmit }) => {
   const handleNewMessage = (event) => {
     event.preventDefault()
     onFormSubmit(message)
-    setMessage('')
+    setMessage("")
   }
 
   return (
-    <>
-      <Form>
-        <Label>
-          <NewMessage type="text"
-            placeholder="Skriv ditt meddelande här..."
-            onChange={(event) => setMessage(event.target.value)}
-            value={message}
-          >
-          </NewMessage>
-        </Label>
-        <Button type="submit"
-          onClick={handleNewMessage}
-        >Skicka meddelande</Button>
-      </Form>
-
-    </>
+    <Form>
+      <Label>
+        <NewMessage type="text"
+          placeholder="Skriv ditt meddelande här..."
+          onChange={(event) => setMessage(event.target.value)}
+          value={message}
+        >
+        </NewMessage>
+      </Label>
+      <Button type="submit"
+        onClick={handleNewMessage}
+      >Skicka meddelande</Button>
+    </Form>
   )
 }

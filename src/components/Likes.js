@@ -1,5 +1,4 @@
 import React from "react"
-import { ReactComponent as Heart2 } from "../Assets/Heart2.svg"
 import { ReactComponent as Heart3 } from "../Assets/Heart3.svg"
 import { LikeHeart, LikeButton, LikesWrap } from "Styling"
 

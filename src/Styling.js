@@ -1,6 +1,8 @@
 import styled from "styled-components/macro"
 import EdiText from "react-editext"
 
+
+//App and login-page
 export const AppWrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -8,6 +10,15 @@ export const AppWrapper = styled.section`
   @media(min-width: 768px) {
     margin: 20px 100px;
   }
+`
+
+export const Header = styled.h1`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  margin: 20px;
+  color: white;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 `
 
 export const Wrapper = styled.div`
@@ -35,22 +46,10 @@ export const WelcomeBox = styled.section`
   }
 `
 
-export const Image = styled.img`
-  width: 200px;
-`
-
-export const Header = styled.h1`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  margin: 20px;
-  color: white;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-`
-
 export const InfoText = styled.p`
   color: #283E51;
 `
+
 export const Footer = styled.footer`
   color: white;
   width: 230px;
@@ -61,6 +60,7 @@ export const Footer = styled.footer`
   }
 `
 
+//Guestbook - NewMessageForm
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -93,25 +93,6 @@ export const NewMessage = styled.textarea`
   }
 `
 
-export const SearchForm = styled(Form)`
-flex-direction: row;
-`
-
-export const Input = styled.input`
-  border: 2px solid #ecdfc8;
-  border-radius: 3px;
-  background-color: white;
-  height: 25px;
-  width: 95%;
-  margin: 4px 6px;
-  font-size: 14px;
-  padding: 3px;
-  @media(min-width: 768px) {
-    height: 30px;
-    font-size: 16px;
-  }
-`
-
 export const Button = styled.button`
   border: none;
   background-color: #ecdfc8;
@@ -135,85 +116,33 @@ export const Button = styled.button`
   }
 `
 
-export const NextButton = styled(Button)`
-  background-color: #283E51;
-  color: white;
-  &:hover {
-    background-color: #283E51;
+//Guestbook - Searchfield
+export const SearchForm = styled(Form)`
+  flex-direction: row;
+`
+
+export const Input = styled.input`
+  border: 2px solid #ecdfc8;
+  border-radius: 3px;
+  background-color: white;
+  height: 25px;
+  width: 95%;
+  margin: 4px 6px;
+  font-size: 14px;
+  padding: 5px;
+  @media(min-width: 768px) {
+    height: 30px;
+    font-size: 16px;
   }
 `
 
 export const SearchButton = styled.button`
 font-size: 20px;
+border: none;
+background-color: transparent;
 `
 
-export const SmallButton = styled(Button)`
-  margin: 0 0 0 8px;
-  width: 65px;
-  @media(min-width: 768px) {
-    width: 90px;
-  }
-`
-
-export const Line = styled.hr`
-  border: 1px solid #ecdfc8;
-  margin: 10px 10px 0 10px;
-`
-
-export const BottomLine = styled(Line)`
-  margin: 0 10px 10px 10px;
-`
-
-export const LikesWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 3px;
-  font-size: 14px;
-  @media(min-width: 768px) {
-    font-size: 16px;
-  }
-`
-
-export const LikeButton = styled.button`
-  background-color: transparent;
-  border: none;
-  width: 30px;
-  font-size: 16px;
-  padding: 6px 0 0 4px;
-  cursor: pointer;
-  @media(min-width: 768px) {
-    margin-right: 8px;
-    padding: 8px 0 0 8px;
-  }
-`
-
-export const LikeHeart = styled.div`
-  svg {
-    width: 20px;
-  }
-  .beige-heart:hover {
-    fill: #d63347;
-  }
-  .red-heart:hover {
-    fill: #ecdfc8;
-  }
-  @media(min-width: 768px) {
-    svg {
-      width: 25px;
-  }
-  }
-`
-
-export const EditButtons = styled.div`
-`
-
-export const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 10px;
-`
+//Guestbook - PostedMessage
 
 export const PostedMessageCard = styled.div`
   width: 280px;
@@ -227,6 +156,16 @@ export const PostedMessageCard = styled.div`
   }
 `
 
+export const Name = styled.p`
+  font-size: 16px;
+  color: #283E51;
+  font-weight: bold;
+  margin: 10px 0 0 10px;
+  @media(min-width: 768px) {
+    font-size: 18px;
+  }
+`
+
 export const TimeStamp = styled.p`
   font-size: 12px;
   color: grey;
@@ -236,14 +175,13 @@ export const TimeStamp = styled.p`
   }
 `
 
-export const Name = styled.p`
-  font-size: 16px;
-  color: #283E51;
-  font-weight: bold;
-  margin: 10px 0 0 10px;
-  @media(min-width: 768px) {
-    font-size: 18px;
-  }
+export const Line = styled.hr`
+  border: 1px solid #ecdfc8;
+  margin: 10px 10px 0 10px;
+`
+
+export const BottomLine = styled(Line)`
+  margin: 0 10px 10px 10px;
 `
 
 export const StyledEdiText = styled(EdiText)`
@@ -289,4 +227,77 @@ export const StyledEdiText = styled(EdiText)`
     width: 65px;
   }
   }
+`
+
+//Guestbook - PostedMessage - Buttons
+export const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+`
+
+export const EditButtons = styled.div`
+`
+
+export const SmallButton = styled(Button)`
+  margin: 0 0 0 8px;
+  width: 65px;
+  @media(min-width: 768px) {
+    width: 90px;
+  }
+`
+
+//Guestbook - PostedMessage - Buttons - Likes
+export const LikesWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3px;
+  font-size: 14px;
+  @media(min-width: 768px) {
+    font-size: 16px;
+  }
+`
+
+export const LikeButton = styled.button`
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  font-size: 16px;
+  padding: 6px 0 0 4px;
+  cursor: pointer;
+  @media(min-width: 768px) {
+    margin-right: 8px;
+    padding: 8px 0 0 8px;
+  }
+`
+
+export const LikeHeart = styled.div`
+  svg {
+    width: 20px;
+  }
+  .beige-heart:hover {
+    fill: #d63347;
+  }
+  .red-heart:hover {
+    fill: #ecdfc8;
+  }
+  @media(min-width: 768px) {
+    svg {
+      width: 25px;
+  }
+  }
+`
+
+//Guestbook - After search
+export const NextButton = styled(Button)`
+  background-color: #283E51;
+  color: white;
+  &:hover {
+    background-color: #283E51;
+  }
+`
+export const InfoMessage = styled.p`
+  color: white;
 `

@@ -3,16 +3,13 @@ import { Redirect } from "react-router-dom"
 import { NewMessageForm } from "components/NewMessageForm"
 import { PostedMessage } from "components/PostedMessage"
 import { SearchField } from "components/Searchfield"
-import { Wrapper, NextButton, ButtonGroup } from "Styling"
-import { relativeTimeRounding } from "moment"
+import { Wrapper, NextButton, ButtonGroup, InfoMessage } from "Styling"
 
 export const Guestbook = () => {
   const [postedMessages, setPostedMessages] = useState([])
   const [newPostedMessage, setNewPostedMessage] = useState("")
   const [updatedMessage, setUpdatedMessage] = useState(false)
-  // const [searchQuery, setSearchQuery] = useState("")
   const [page, setPage] = useState(1)
-  // const [pageQuery, setPageQuery] = ("")
   const [query, setQuery] = useState("")
   const [savedSearchTerm, setSavedSearchTerm] = useState("")
 
@@ -26,8 +23,7 @@ export const Guestbook = () => {
     })
       .then(res => res.json())
       .then(json => setPostedMessages(json))
-  }, [newPostedMessage, updatedMessage, query, page])
-
+  }, [newPostedMessage, updatedMessage, query])
   const handleFormSubmit = (message) => {
     fetch(`${testUrl}/messages`, {
       method: "POST",
@@ -50,21 +46,21 @@ export const Guestbook = () => {
   }
 
   const handleSearch = (searchTerm) => {
-    if (searchTerm === '') {
+    if (searchTerm === "") {
       handleClear()
       return
     }
-    const new_page_number = 1
-    setPage(new_page_number)
-    setQuery(`?search=${searchTerm}&page=${new_page_number}`)
+    const newPageNumber = 1
+    setPage(newPageNumber)
+    setQuery(`?search=${searchTerm}&page=${newPageNumber}`)
     setSavedSearchTerm(searchTerm)
   }
 
   const handlePages = () => {
-    const new_page_number = page + 1
-    setPage(new_page_number)
-    setQuery(`?search=${savedSearchTerm}&page=${new_page_number}`)
-    window.scrollTo(0, 0);
+    const newPageNumber = page + 1
+    setPage(newPageNumber)
+    setQuery(`?search=${savedSearchTerm}&page=${newPageNumber}`)
+    window.scrollTo(0, 0)
   }
 
   const handleClear = () => {
@@ -77,25 +73,26 @@ export const Guestbook = () => {
       <SearchField onSearch={handleSearch} />
       {postedMessages[0] && (
         postedMessages.map((message) => (
-          <>
-            <PostedMessage
-              key={message._id}
-              _id={message._id}
-              message={message.message}
-              name={message.name}
-              googleId={message.googleId}
-              createdAt={message.createdAt}
-              likes={message.likes.length}
-              onUpdatedMessage={onUpdatedMessage}
-            />
-          </>
+          <PostedMessage
+            key={message._id}
+            _id={message._id}
+            message={message.message}
+            name={message.name}
+            googleId={message.googleId}
+            createdAt={message.createdAt}
+            likes={message.likes.length}
+            onUpdatedMessage={onUpdatedMessage}
+          />
         ))
       )}
-      {savedSearchTerm && (
+      {savedSearchTerm && postedMessages[0] && (
         <ButtonGroup>
           <NextButton onClick={() => handleClear()}>Rensa sökfilter</NextButton>
           <NextButton onClick={() => handlePages()}>Visa flera inlägg</NextButton>
         </ButtonGroup>
+      )}
+      {savedSearchTerm && postedMessages.message && (
+        <InfoMessage>Inga meddelanden funna</InfoMessage>
       )}
     </Wrapper>
   )
