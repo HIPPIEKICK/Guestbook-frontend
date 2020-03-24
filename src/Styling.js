@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
 export const WelcomeBox = styled.section`
   width: 230px;
   background-color: #fcf8e8;
-  padding: 10px 20px;
+  padding: 24px 20px 10px 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -95,12 +95,11 @@ export const NewMessage = styled.textarea`
 `
 
 export const Button = styled.button`
-  border: none;
   background-color: #ecdfc8;
   color: #283E51;
   padding: 4px 8px;
   font-family: 'Quicksand', sans-serif;
-  width: 120px;
+  width: 90px;
   border-radius: 4px;
   margin: 0 8px 0 0;
   align-self: flex-end;
@@ -116,6 +115,7 @@ export const Button = styled.button`
 //Guestbook - Searchfield
 export const SearchForm = styled(Form)`
   flex-direction: row;
+  padding: 8px;
 `
 
 export const Input = styled.input`
@@ -210,17 +210,17 @@ export const StyledEdiText = styled(EdiText)`
     display:none;
   }
   button[editext="save-button"], button[editext="cancel-button"] {
-    border: none;
     background-color: #ecdfc8;
     color: #283E51;
     padding: 4px 8px;
     font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
-    width: 50px;
     border-radius: 4px;
     margin: 0 8px 0 0;
+    cursor: pointer;
+    border: 0.5px solid rgba(40, 62, 81, 0.5);
+    box-shadow: 2px 2px 4px rgba(40, 62, 81, 1); 
+    transition: background-color 0.2s ease-out;
     @media(min-width: 768px) {
-    font-size: 16px;
     width: 65px;
   }
   }
@@ -293,10 +293,13 @@ export const NextButton = styled(Button)`
   background-color: #283E51;
   color: white;
   border: 0.5px solid rgba(255, 255, 255, 0.5);
+  width: 100px;
   &:hover {
     background-color: #416583;
   }
 `
 export const InfoMessage = styled.p`
   color: white;
+  width: 100%;
+  margin: 0 0 4px;
 `

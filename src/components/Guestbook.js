@@ -59,12 +59,14 @@ export const Guestbook = () => {
   const handlePages = () => {
     const newPageNumber = page + 1
     setPage(newPageNumber)
-    setQuery(`?search=${savedSearchTerm}&page=${newPageNumber}`)
+    { savedSearchTerm && (setQuery(`?search=${savedSearchTerm}&page=${newPageNumber}`)) }
+    { !savedSearchTerm && (setQuery(`?page=${newPageNumber}`)) }
     window.scrollTo(0, 0)
   }
 
   const handleClear = () => {
     window.location.reload()
+    setSavedSearchTerm("")
   }
 
   return (
@@ -85,15 +87,19 @@ export const Guestbook = () => {
           />
         ))
       )}
-      {savedSearchTerm && (
-        <>
-          {postedMessages.message && <InfoMessage>Inga meddelanden funna</InfoMessage>}
+
+      <>
+        {postedMessages.message &&
           <ButtonGroup>
-            <NextButton onClick={() => handleClear()}>Rensa sökfilter</NextButton>
-            {postedMessages[0] && <NextButton onClick={() => handlePages()}>Visa flera inlägg</NextButton>}
+            <InfoMessage>Inga inlägg att visa</InfoMessage>
+            {!savedSearchTerm && <NextButton onClick={() => handleClear()}>Tillbaka</NextButton>}
           </ButtonGroup>
-        </>
-      )}
+        }
+        <ButtonGroup>
+          {savedSearchTerm && <NextButton onClick={() => handleClear()}>Rensa sökfilter</NextButton>}
+          {postedMessages[0] && <NextButton onClick={() => handlePages()}>Nästa</NextButton>}
+        </ButtonGroup>
+      </>
     </Wrapper>
   )
 }

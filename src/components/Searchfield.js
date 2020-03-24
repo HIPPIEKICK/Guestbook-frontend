@@ -19,7 +19,7 @@ export const SearchField = (props) => {
         value={searchTerm}
         onChange={event => setSearchTerm(event.target.value)}
         disabled={false}
-        placeholder="Sök efter meddelanden..."
+        placeholder="Sök efter inlägg..."
         type="search"
       />
       <SearchButton type="submit"><span role="img" aria-label="magnifyer-emoji">🔍</span></SearchButton>

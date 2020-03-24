@@ -27,7 +27,7 @@ export const Login = () => {
           onFailure={handleLogin}
           cookiePolicy={"single_host_origin"}
         />
-        <InfoText>Logga in med google för att läsa och skriva i gästboken. Det namn du loggar in med kommer vara avsändaren på dina meddelanden.</InfoText>
+        <InfoText>Logga in med google för att läsa och skriva i gästboken. Det namn du loggar in med kommer vara avsändaren på dina inlägg.</InfoText>
       </WelcomeBox>
       <Footer>Gästbok av Matilda Arvidsson. Hjärt-emoji från Noun Project.</Footer>
     </Wrapper>
