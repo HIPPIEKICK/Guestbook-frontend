@@ -7,7 +7,7 @@ export const Login = () => {
   const [redirect, setRedirect] = useState(false)
 
   const handleLogin = (res) => {
-    sessionStorage.setItem("name", res.Rt.Ad)
+    sessionStorage.setItem("name", `${res.profileObj.givenName} ${res.profileObj.familyName}` || res.Ut.Bd)
     sessionStorage.setItem("id_token", res.tokenId)
     sessionStorage.setItem("googleId", res.googleId)
     setRedirect(true)

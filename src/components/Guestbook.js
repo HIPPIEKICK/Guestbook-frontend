@@ -24,6 +24,7 @@ export const Guestbook = () => {
       .then(res => res.json())
       .then(json => setPostedMessages(json))
   }, [newPostedMessage, updatedMessage, query])
+
   const handleFormSubmit = (message) => {
     fetch(`${url}messages`, {
       method: "POST",
